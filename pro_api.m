@@ -143,6 +143,9 @@ date      on      1w      2w      1m      3m      6m      9m      1y
                         data = sortrows(data,'trade_date','ascend');
                     end
                 catch
+                    if size(index,1) ~= 1
+                        index = index';
+                    end
                     data = [index;data];
                 end
             end

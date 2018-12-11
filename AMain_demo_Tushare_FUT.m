@@ -5,7 +5,7 @@
 % 
 % 2019/01/01
 % 
-% 通过Tushare Pro获取期货相关数据（使用 Tushare_MATLAB_FSDK）
+% 通过Tushare Pro获取数据样例（使用 Tushare_MATLAB_FSDK）
 % 
 % Tushare_MATLAB_FSDK see 
 % 
@@ -30,30 +30,35 @@ token = YourTushareToken_char;
 api = pro_api(token);
 
 %% 期货合约信息表
-
+tic;
 tData = api.query('fut_basic','exchange','DCE');
 tData(1:gPara.len_demo,:)
+toc;
 %% 交易日历
-
+tic;
 tData = api.query('trade_cal','exchange','DCE');
 tData(1:gPara.len_demo,:)
+toc;
 %% 期货日线行情
-
+tic;
 tData = api.query('fut_daily','ts_code','CU1811.SHF');
 tData(1:gPara.len_demo,:)
+toc;
 %% 每日成交持仓排名
-
+tic;
 tData = api.query('fut_holding','symbol','C','exchange','DCE','trade_date','20181113');
 tData(1:gPara.len_demo,:)
+toc;
 %% 仓单日报
-
+tic;
 tData = api.query('fut_wsr','symbol','ZN','trade_date','20181113');
 tData(1:gPara.len_demo,:)
+toc;
 %% 结算参数
-
+tic;
 tData = api.query('fut_settle','symbol','DCE','trade_date','20181113');
 tData(1:gPara.len_demo,:)
-
+toc;
 %% ETC
 over = 1;
 

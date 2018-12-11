@@ -5,7 +5,7 @@
 % 
 % 2019/01/01
 % 
-% 通过Tushare Pro获取期货相关数据（使用 Tushare_MATLAB_FSDK）
+% 通过Tushare Pro获取数据样例（使用 Tushare_MATLAB_FSDK）
 % 
 % Tushare_MATLAB_FSDK see 
 % 
