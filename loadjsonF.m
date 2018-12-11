@@ -324,9 +324,13 @@ function str = parseStr(inStr, esc, varargin)
                 end
                 
               %% == \u字符转换 把\u开头的unicode转中文
-              %% == 20181130 Add by 李洋faruto
+              %% == 20181211 Add by 李洋faruto
                 run = 1;
-                if 1 == run && ~isempty(str) && str(1) == '\' && str(2) == 'u'
+                % 字符串中存在 \u
+                expr = '\\u';
+                tData = regexpi(str,expr,'match','ignorecase');
+                tFlag = ~isempty(tData);
+                if 1 == run && ~isempty(str) && tFlag 
                     str = Unicode2Chinese(str);
                 end
                 
