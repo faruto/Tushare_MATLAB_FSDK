@@ -1,0 +1,207 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>AMain_demo_Tushare_Index</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-12-11"><meta name="DC.source" content="AMain_demo_Tushare_Index.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>AMain_demo_Tushare_Index</h1><!--introduction--><p>by LiYang_faruto</p><p>Email:farutoliyang@foxmail.com</p><p>2019/01/01</p><p>&#36890;&#36807;Tushare Pro&#33719;&#21462;&#26399;&#36135;&#30456;&#20851;&#25968;&#25454;&#65288;&#20351;&#29992; Tushare_MATLAB_FSDK&#65289;</p><p>Tushare_MATLAB_FSDK see</p><p><a href="https://github.com/faruto/Tushare_MATLAB_FSDK">Tushare_MATLAB_FSDK</a></p><p><a href="https://faruto.github.io/html/index.html">faruto_github_io</a></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">A Little Clean Work</a></li><li><a href="#2">&#20840;&#23616;&#21442;&#25968;</a></li><li><a href="#3">tushare api connect</a></li><li><a href="#4">&#25351;&#25968;&#22522;&#26412;&#20449;&#24687;</a></li><li><a href="#5">&#25351;&#25968;&#26085;&#32447;&#34892;&#24773;</a></li><li><a href="#6">&#25351;&#25968;&#25104;&#20998;&#21644;&#26435;&#37325;</a></li><li><a href="#7">&#22823;&#30424;&#25351;&#25968;&#27599;&#26085;&#25351;&#26631;</a></li><li><a href="#8">ETC</a></li><li><a href="#9">Record Time</a></li></ul></div><h2>A Little Clean Work<a name="1"></a></h2><pre class="codeinput">tic;
+<span class="comment">% clear;</span>
+<span class="comment">% clc;</span>
+<span class="comment">% close all;</span>
+format <span class="string">compact</span>;
+</pre><h2>&#20840;&#23616;&#21442;&#25968;<a name="2"></a></h2><pre class="codeinput">gPara.len_demo = 8;
+</pre><h2>tushare api connect<a name="3"></a></h2><p>&#36755;&#20837;&#24744;&#33258;&#24049;&#30340;Token,&#26597;&#30475;&#20301;&#32622; https://tushare.pro/user/token</p><pre class="codeinput">YourTushareToken_char = TushareToken;
+token = YourTushareToken_char;
+api = pro_api(token);
+</pre><h2>&#25351;&#25968;&#22522;&#26412;&#20449;&#24687;<a name="4"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'index_basic'</span>,<span class="string">'market'</span>,<span class="string">'SW'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+      ts_code        name      market    publisher    category    base_date     base_point    list_date 
+    ___________    ________    ______    _________    ________    __________    __________    __________
+    '801001.SI'    '&#30003;&#19975;50'      'SW'      '&#30003;&#19975;&#30740;&#31350;'       '&#20854;&#20182;'        '19991230'    [1000]        []        
+    '801002.SI'    '&#30003;&#19975;&#20013;&#23567;&#26495;'     'SW'      '&#30003;&#19975;&#30740;&#31350;'       '&#20854;&#20182;'        '20040705'    [1000]        []        
+    '801003.SI'    '&#30003;&#19975;A&#32929;'      'SW'      '&#30003;&#19975;&#30740;&#31350;'       '&#20854;&#20182;'        '19991230'    [1000]        []        
+    '801004.SI'    '&#30003;&#19975;&#32929;&#25913;&#25351;&#25968;'    'SW'      '&#30003;&#19975;&#30740;&#31350;'       '&#20854;&#20182;'        '20050815'    [1000]        []        
+    '801005.SI'    '&#30003;&#19975;&#21019;&#19994;&#26495;'     'SW'      '&#30003;&#19975;&#30740;&#31350;'       '&#20854;&#20182;'        '20091105'    [1000]        '20091106'
+    '801010.SI'    '&#20892;&#26519;&#29287;&#28180;'      'SW'      '&#30003;&#19975;&#30740;&#31350;'       '&#19968;&#32423;&#34892;&#19994;&#25351;&#25968;'    '19991230'    [1000]        '20031015'
+    '801011.SI'    '&#26519;&#19994;&#8545;'       'SW'      '&#30003;&#19975;&#30740;&#31350;'       '&#20108;&#32423;&#34892;&#19994;&#25351;&#25968;'    '19991230'    [1000]        []        
+    '801012.SI'    '&#20892;&#20135;&#21697;&#21152;&#24037;'     'SW'      '&#30003;&#19975;&#30740;&#31350;'       '&#20108;&#32423;&#34892;&#19994;&#25351;&#25968;'    '19991230'    [1000]        []        
+&#26102;&#38388;&#24050;&#36807; 2.228093 &#31186;&#12290;
+</pre><h2>&#25351;&#25968;&#26085;&#32447;&#34892;&#24773;<a name="5"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'index_daily'</span>,<span class="string">'ts_code'</span>,<span class="string">'399300.SZ'</span>,<span class="string">'start_date'</span>,<span class="string">'20180201'</span>,<span class="string">'end_date'</span>,<span class="string">'20181010'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+      ts_code      trade_date    close      open      high      low      pre_close    change     pct_chg       vol          amount  
+    ___________    __________    ______    ______    ______    ______    _________    _______    _______    __________    __________
+    '399300.SZ'    '20181010'    3281.6    3295.4    3315.7    3256.6    3288.7       -7.0928    -0.2157    6.4493e+07    7.9167e+07
+    '399300.SZ'    '20181009'    3288.7    3290.2    3309.8    3276.1    3290.9       -2.2082    -0.0671    6.6723e+07    7.8373e+07
+    '399300.SZ'    '20181008'    3290.9    3361.6    3364.5    3285.3    3438.9       -147.97    -4.3028    9.7889e+07    1.1416e+08
+    '399300.SZ'    '20180928'    3438.9      3410      3445    3404.7    3403.6        35.275     1.0364    8.4378e+07     9.488e+07
+    '399300.SZ'    '20180927'    3403.6      3416    3423.7    3394.7    3417.2       -13.651    -0.3995    6.9765e+07    8.7573e+07
+    '399300.SZ'    '20180926'    3417.2    3388.6    3448.3    3383.2    3379.8        37.437     1.1077    9.3173e+07    1.1911e+08
+    '399300.SZ'    '20180925'    3379.8      3376    3394.4      3367    3410.5       -30.681    -0.8996    6.9055e+07     8.287e+07
+    '399300.SZ'    '20180921'    3410.5    3320.7    3410.5    3307.8    3310.1        100.36     3.0319    1.0842e+08    1.2357e+08
+&#26102;&#38388;&#24050;&#36807; 0.500265 &#31186;&#12290;
+</pre><h2>&#25351;&#25968;&#25104;&#20998;&#21644;&#26435;&#37325;<a name="6"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'index_weight'</span>,<span class="string">'index_code'</span>,<span class="string">'399300.SZ'</span>,<span class="string">'start_date'</span>,<span class="string">'20180901'</span>,<span class="string">'end_date'</span>,<span class="string">'20181010'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+    index_code      con_code      trade_date    weight
+    ___________    ___________    __________    ______
+    '399300.SZ'    '001965.SZ'    '20181008'    0.0464
+    '399300.SZ'    '002925.SZ'    '20181008'    0.0385
+    '399300.SZ'    '600025.SH'    '20181008'    0.0494
+    '399300.SZ'    '603260.SH'    '20181008'    0.0376
+    '399300.SZ'    '001979.SZ'    '20181008'     0.418
+    '399300.SZ'    '601155.SH'    '20181008'     0.222
+    '399300.SZ'    '601108.SH'    '20181008'    0.0338
+    '399300.SZ'    '601228.SH'    '20181008'    0.0902
+&#26102;&#38388;&#24050;&#36807; 1.958899 &#31186;&#12290;
+</pre><h2>&#22823;&#30424;&#25351;&#25968;&#27599;&#26085;&#25351;&#26631;<a name="7"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'index_dailybasic'</span>,<span class="string">'trade_date'</span>,<span class="string">'20181018'</span>,<span class="string">'fields'</span>,<span class="string">'ts_code,trade_date,turnover_rate,pe'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+      ts_code      trade_date     total_mv      float_mv     total_share    float_share    free_share    turnover_rate    turnover_rate_f     pe      pe_ttm     pb 
+    ___________    __________    __________    __________    ___________    ___________    __________    _____________    _______________    _____    ______    ____
+    '000001.SH'    '20181018'    3.1699e+13    2.2966e+13    4.4428e+12     3.2899e+12      1.244e+12    0.38             1.01               11.92    11.13     1.28
+    '000300.SH'    '20181018'    2.9449e+13    2.1843e+13     3.692e+12     2.7031e+12     9.2888e+11    0.27             0.79               11.17    10.47      1.3
+    '000905.SH'    '20181018'    5.6874e+12    4.4656e+12    8.8114e+11     7.2493e+11     4.1554e+11    0.82             1.44               18.03    16.65     1.51
+    '399001.SZ'    '20181018'    1.0179e+13    7.7054e+12    1.0887e+12     8.4577e+11     5.0947e+11    0.88             1.46               17.48    16.16     1.93
+    '399005.SZ'    '20181018'     3.085e+12    2.2289e+12    2.4421e+11      1.798e+11     1.1033e+11    0.85             1.39               21.43    19.55     2.73
+    '399006.SZ'    '20181018'    1.6939e+12    1.0838e+12     1.288e+11     9.3588e+10     6.9878e+10     1.5             2.01               29.56    27.04      3.2
+    '399016.SZ'    '20181018'    2.1854e+12    1.7031e+12    1.7449e+11     1.4094e+11     9.5872e+10    1.06             1.56               18.86    17.93     2.72
+    '399300.SZ'    '20181018'    2.9449e+13    2.1843e+13     3.692e+12     2.7031e+12     9.2888e+11    0.27             0.79               11.17    10.47      1.3
+&#26102;&#38388;&#24050;&#36807; 0.099654 &#31186;&#12290;
+</pre><h2>ETC<a name="8"></a></h2><pre class="codeinput">over = 1;
+</pre><h2>Record Time<a name="9"></a></h2><pre class="codeinput">toc;
+displayEndOfDemoMessage(mfilename);
+</pre><pre class="codeoutput">&#26102;&#38388;&#24050;&#36807; 0.111937 &#31186;&#12290;
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% AMain_demo_Tushare_Index
+% by LiYang_faruto
+% 
+% Email:farutoliyang@foxmail.com
+% 
+% 2019/01/01
+% 
+% 通过Tushare Pro获取期货相关数据（使用 Tushare_MATLAB_FSDK）
+% 
+% Tushare_MATLAB_FSDK see 
+% 
+% <https://github.com/faruto/Tushare_MATLAB_FSDK Tushare_MATLAB_FSDK>
+%
+% <https://faruto.github.io/html/index.html faruto_github_io>
+%% A Little Clean Work
+tic;
+% clear;
+% clc;
+% close all;
+format compact;
+%% 全局参数
+
+gPara.len_demo = 8;
+
+%% tushare api connect
+% 输入您自己的Token,查看位置 https://tushare.pro/user/token
+
+YourTushareToken_char = TushareToken;
+token = YourTushareToken_char;
+api = pro_api(token);
+
+%% 指数基本信息
+tic;
+tData = api.query('index_basic','market','SW');
+tData(1:gPara.len_demo,:)
+toc;
+%% 指数日线行情
+tic;
+tData = api.query('index_daily','ts_code','399300.SZ','start_date','20180201','end_date','20181010');
+tData(1:gPara.len_demo,:)
+toc;
+%% 指数成分和权重
+tic;
+tData = api.query('index_weight','index_code','399300.SZ','start_date','20180901','end_date','20181010');
+tData(1:gPara.len_demo,:)
+toc;
+%% 大盘指数每日指标
+tic;
+tData = api.query('index_dailybasic','trade_date','20181018','fields','ts_code,trade_date,turnover_rate,pe');
+tData(1:gPara.len_demo,:)
+toc;
+%% ETC
+over = 1;
+
+%% Record Time
+toc;
+displayEndOfDemoMessage(mfilename);
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,267 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>AMain_demo_Tushare_Macro</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-12-11"><meta name="DC.source" content="AMain_demo_Tushare_Macro.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>AMain_demo_Tushare_Macro</h1><!--introduction--><p>by LiYang_faruto</p><p>Email:farutoliyang@foxmail.com</p><p>2019/01/01</p><p>&#36890;&#36807;Tushare Pro&#33719;&#21462;&#26399;&#36135;&#30456;&#20851;&#25968;&#25454;&#65288;&#20351;&#29992; Tushare_MATLAB_FSDK&#65289;</p><p>Tushare_MATLAB_FSDK see</p><p><a href="https://github.com/faruto/Tushare_MATLAB_FSDK">Tushare_MATLAB_FSDK</a></p><p><a href="https://faruto.github.io/html/index.html">faruto_github_io</a></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">A Little Clean Work</a></li><li><a href="#2">&#20840;&#23616;&#21442;&#25968;</a></li><li><a href="#3">tushare api connect</a></li><li><a href="#4">SHIBOR&#21033;&#29575;&#25968;&#25454;</a></li><li><a href="#5">SHIBOR&#25253;&#20215;&#25968;&#25454;</a></li><li><a href="#6">LPR&#36151;&#27454;&#22522;&#30784;&#21033;&#29575;</a></li><li><a href="#7">LIBOR&#25286;&#20511;&#21033;&#29575;</a></li><li><a href="#8">HIBOR&#21033;&#29575;</a></li><li><a href="#9">ETC</a></li><li><a href="#10">Record Time</a></li></ul></div><h2>A Little Clean Work<a name="1"></a></h2><pre class="codeinput">tic;
+<span class="comment">% clear;</span>
+<span class="comment">% clc;</span>
+<span class="comment">% close all;</span>
+format <span class="string">compact</span>;
+</pre><h2>&#20840;&#23616;&#21442;&#25968;<a name="2"></a></h2><pre class="codeinput">gPara.len_demo = 8;
+</pre><h2>tushare api connect<a name="3"></a></h2><p>&#36755;&#20837;&#24744;&#33258;&#24049;&#30340;Token,&#26597;&#30475;&#20301;&#32622; https://tushare.pro/user/token</p><pre class="codeinput">YourTushareToken_char = TushareToken;
+token = YourTushareToken_char;
+api = pro_api(token);
+</pre><h2>SHIBOR&#21033;&#29575;&#25968;&#25454;<a name="4"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'shibor'</span>,<span class="string">'start_date'</span>,<span class="string">'20180101'</span>,<span class="string">'end_date'</span>,<span class="string">'20181101'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+  1 &#33267; 6 &#21015;
+    'date'        'on'        '1w'        '2w'        '1m'        '3m'    
+    '20181101'    [2.5470]    [2.6730]    [2.6910]    [2.6960]    [2.9760]
+    '20181031'    [2.3700]    [2.7150]    [2.7300]    [2.6890]    [2.9630]
+    '20181030'    [1.5660]    [2.5980]    [2.6400]    [2.6630]    [2.9570]
+    '20181029'    [1.8520]    [2.6090]    [2.6510]    [2.6720]    [2.9580]
+    '20181026'    [2.0670]    [2.6180]    [2.6500]    [2.6730]    [2.9520]
+    '20181025'    [2.2150]    [2.6300]    [2.6510]    [2.6750]    [2.9480]
+    '20181024'    [2.3930]    [2.6310]    [2.6530]    [2.6750]    [2.9240]
+  7 &#33267; 9 &#21015;
+    '6m'        '9m'        '1y'    
+    [3.2970]    [3.5040]    [3.5500]
+    [3.2980]    [3.5040]    [3.5500]
+    [3.2950]    [3.5010]    [3.5500]
+    [3.2970]    [3.5020]    [3.5500]
+    [3.2970]    [3.5020]    [3.5500]
+    [3.2970]    [3.5050]    [3.5520]
+    [3.2960]    [3.4980]    [3.5440]
+&#26102;&#38388;&#24050;&#36807; 0.563528 &#31186;&#12290;
+</pre><h2>SHIBOR&#25253;&#20215;&#25968;&#25454;<a name="5"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'shibor_quote'</span>,<span class="string">'start_date'</span>,<span class="string">'20181001'</span>,<span class="string">'end_date'</span>,<span class="string">'20181101'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+  1 &#33267; 6 &#21015;
+    'date'        'bank'       'on_b'      'on_a'      '1w_b'      '1w_a'  
+    '20181101'    '&#37038;&#20648;&#38134;&#34892;'    [2.5500]    [2.5500]    [2.7200]    [2.7200]
+    '20181101'    '&#28006;&#21457;&#38134;&#34892;'    [2.5600]    [2.5600]    [2.7500]    [2.7500]
+    '20181101'    '&#27719;&#20016;&#20013;&#22269;'    [2.5500]    [2.5500]    [2.6500]    [2.6500]
+    '20181101'    '&#27665;&#29983;&#38134;&#34892;'    [2.5400]    [2.5400]    [2.6500]    [2.6500]
+    '20181101'    '&#25307;&#21830;&#38134;&#34892;'    [2.5400]    [2.5400]    [2.6700]    [2.6700]
+    '20181101'    '&#24314;&#35774;&#38134;&#34892;'    [2.5300]    [2.5300]    [2.6700]    [2.6700]
+    '20181101'    '&#24191;&#21457;&#38134;&#34892;'    [2.5600]    [2.5600]    [2.6600]    [2.6600]
+  7 &#33267; 12 &#21015;
+    '2w_b'      '2w_a'      '1m_b'      '1m_a'      '3m_b'      '3m_a'  
+    [2.7200]    [2.7200]    [2.6900]    [2.6900]    [2.9600]    [2.9600]
+    [2.6500]    [2.6500]    [2.7000]    [2.7000]    [2.9600]    [2.9600]
+    [2.6800]    [2.6800]    [2.6900]    [2.6900]    [2.9700]    [2.9700]
+    [2.6700]    [2.6700]    [2.6800]    [2.6800]    [2.9600]    [2.9600]
+    [2.6500]    [2.6500]    [2.7000]    [2.7000]    [3.1000]    [3.1000]
+    [2.6800]    [2.6800]    [2.7200]    [2.7200]    [     3]    [     3]
+    [2.6800]    [2.6800]    [2.7200]    [2.7200]    [     3]    [     3]
+  13 &#33267; 18 &#21015;
+    '6m_b'      '6m_a'      '9m_b'      '9m_a'      '1y_b'      '1y_a'  
+    [3.3000]    [3.3000]    [3.5000]    [3.5000]    [3.5500]    [3.5500]
+    [3.3000]    [3.3000]    [3.5000]    [3.5000]    [3.5500]    [3.5500]
+    [3.3000]    [3.3000]    [3.5000]    [3.5000]    [3.5500]    [3.5500]
+    [3.2900]    [3.2900]    [3.5100]    [3.5100]    [3.5500]    [3.5500]
+    [3.3000]    [3.3000]    [3.5500]    [3.5500]    [3.5500]    [3.5500]
+    [3.2600]    [3.2600]    [3.5000]    [3.5000]    [3.5500]    [3.5500]
+    [3.2500]    [3.2500]    [3.5000]    [3.5000]    [3.5500]    [3.5500]
+&#26102;&#38388;&#24050;&#36807; 1.533578 &#31186;&#12290;
+</pre><h2>LPR&#36151;&#27454;&#22522;&#30784;&#21033;&#29575;<a name="6"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'shibor_lpr'</span>,<span class="string">'start_date'</span>,<span class="string">'20181001'</span>,<span class="string">'end_date'</span>,<span class="string">'20181101'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+    'date'        '1y'    
+    '20181101'    [4.3100]
+    '20181031'    [4.3100]
+    '20181030'    [4.3100]
+    '20181029'    [4.3100]
+    '20181026'    [4.3100]
+    '20181025'    [4.3100]
+    '20181024'    [4.3100]
+&#26102;&#38388;&#24050;&#36807; 0.073908 &#31186;&#12290;
+</pre><h2>LIBOR&#25286;&#20511;&#21033;&#29575;<a name="7"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'libor'</span>,<span class="string">'curr_type'</span>,<span class="string">'USD'</span>, <span class="string">'start_date'</span>,<span class="string">'20180101'</span>,<span class="string">'end_date'</span>,<span class="string">'20181130'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+  1 &#33267; 6 &#21015;
+    'date'        'curr_type'    'on'        '1w'        '1m'        '2m'    
+    '20181130'    'USD'          [2.1775]    [2.2213]    [2.3469]    [2.5101]
+    '20181129'    'USD'          [2.1828]    [2.2288]    [2.3493]    [2.5113]
+    '20181128'    'USD'          [2.1825]    [2.2245]    [2.3446]    [2.4950]
+    '20181127'    'USD'          [2.1785]    [2.2349]    [2.3493]    [2.4990]
+    '20181126'    'USD'          [2.1830]    [2.2190]    [2.3367]    [2.4953]
+    '20181123'    'USD'          [2.1770]    [2.2219]    [2.3219]    [2.4954]
+    '20181122'    'USD'                []    [2.2221]    [2.3149]    [2.4801]
+  7 &#33267; 9 &#21015;
+    '3m'        '6m'        '12m'   
+    [2.7361]    [2.8946]    [3.1203]
+    [2.7381]    [2.8852]    [3.1187]
+    [2.7066]    [2.8866]    [3.1341]
+    [2.7060]    [2.8844]    [3.1307]
+    [2.7068]    [2.8927]    [3.1284]
+    [2.6912]    [2.8863]    [3.1208]
+    [2.6892]    [2.8872]    [3.1095]
+&#26102;&#38388;&#24050;&#36807; 0.586900 &#31186;&#12290;
+</pre><h2>HIBOR&#21033;&#29575;<a name="8"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'hibor'</span>,<span class="string">'start_date'</span>,<span class="string">'20180101'</span>,<span class="string">'end_date'</span>,<span class="string">'20181130'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+  1 &#33267; 6 &#21015;
+    'date'        'on'        '1w'        '2w'        '1m'        '2m'    
+    '20181130'    [1.5250]    [1.1013]    [1.0800]    [1.2029]    [1.8303]
+    '20181129'    [0.7614]    [0.9564]    [1.0104]    [1.1236]    [1.8049]
+    '20181128'    [0.6679]    [0.9561]    [0.9993]    [1.1096]    [1.7710]
+    '20181127'    [0.7136]    [0.9554]    [0.9979]    [1.0932]    [1.7632]
+    '20181126'    [0.6882]    [0.9282]    [0.9911]    [1.0821]    [1.7516]
+    '20181123'    [0.6857]    [0.8400]    [0.9104]    [1.0821]    [1.7530]
+    '20181122'    [0.4716]    [0.5975]    [0.7675]    [1.0121]    [1.7313]
+  7 &#33267; 9 &#21015;
+    '3m'        '6m'        '12m'   
+    [2.0379]    [2.3282]    [2.6593]
+    [2.0102]    [2.3164]    [2.6550]
+    [1.9764]    [2.3014]    [2.6564]
+    [1.9835]    [2.3037]    [2.6557]
+    [1.9774]    [2.2996]    [2.6545]
+    [1.9759]    [2.3009]    [2.6538]
+    [1.9650]    [2.2925]    [2.6475]
+&#26102;&#38388;&#24050;&#36807; 0.630528 &#31186;&#12290;
+</pre><h2>ETC<a name="9"></a></h2><pre class="codeinput">over = 1;
+</pre><h2>Record Time<a name="10"></a></h2><pre class="codeinput">toc;
+displayEndOfDemoMessage(mfilename);
+</pre><pre class="codeoutput">&#26102;&#38388;&#24050;&#36807; 0.643118 &#31186;&#12290;
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% AMain_demo_Tushare_Macro
+% by LiYang_faruto
+% 
+% Email:farutoliyang@foxmail.com
+% 
+% 2019/01/01
+% 
+% 通过Tushare Pro获取期货相关数据（使用 Tushare_MATLAB_FSDK）
+% 
+% Tushare_MATLAB_FSDK see 
+% 
+% <https://github.com/faruto/Tushare_MATLAB_FSDK Tushare_MATLAB_FSDK>
+%
+% <https://faruto.github.io/html/index.html faruto_github_io>
+%% A Little Clean Work
+tic;
+% clear;
+% clc;
+% close all;
+format compact;
+%% 全局参数
+
+gPara.len_demo = 8;
+
+%% tushare api connect
+% 输入您自己的Token,查看位置 https://tushare.pro/user/token
+
+YourTushareToken_char = TushareToken;
+token = YourTushareToken_char;
+api = pro_api(token);
+
+%% SHIBOR利率数据
+tic;
+tData = api.query('shibor','start_date','20180101','end_date','20181101');
+tData(1:gPara.len_demo,:)
+toc;
+%% SHIBOR报价数据
+tic;
+tData = api.query('shibor_quote','start_date','20181001','end_date','20181101');
+tData(1:gPara.len_demo,:)
+toc;
+%% LPR贷款基础利率
+tic;
+tData = api.query('shibor_lpr','start_date','20181001','end_date','20181101');
+tData(1:gPara.len_demo,:)
+toc;
+%% LIBOR拆借利率
+tic;
+tData = api.query('libor','curr_type','USD', 'start_date','20180101','end_date','20181130');
+tData(1:gPara.len_demo,:)
+toc;
+%% HIBOR利率
+tic;
+tData = api.query('hibor','start_date','20180101','end_date','20181130');
+tData(1:gPara.len_demo,:)
+toc;
+%% ETC
+over = 1;
+
+%% Record Time
+toc;
+displayEndOfDemoMessage(mfilename);
+
+##### SOURCE END #####
+--></body></html>

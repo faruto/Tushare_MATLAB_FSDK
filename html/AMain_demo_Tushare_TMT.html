@@ -1,0 +1,207 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>AMain_demo_Tushare_TMT</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-12-11"><meta name="DC.source" content="AMain_demo_Tushare_TMT.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>AMain_demo_Tushare_TMT</h1><!--introduction--><p>by LiYang_faruto</p><p>Email:farutoliyang@foxmail.com</p><p>2019/01/01</p><p>&#36890;&#36807;Tushare Pro&#33719;&#21462;&#26399;&#36135;&#30456;&#20851;&#25968;&#25454;&#65288;&#20351;&#29992; Tushare_MATLAB_FSDK&#65289;</p><p>Tushare_MATLAB_FSDK see</p><p><a href="https://github.com/faruto/Tushare_MATLAB_FSDK">Tushare_MATLAB_FSDK</a></p><p><a href="https://faruto.github.io/html/index.html">faruto_github_io</a></p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">A Little Clean Work</a></li><li><a href="#2">&#20840;&#23616;&#21442;&#25968;</a></li><li><a href="#3">tushare api connect</a></li><li><a href="#4">&#30005;&#24433;&#26376;&#24230;&#31080;&#25151;</a></li><li><a href="#5">&#30005;&#24433;&#21608;&#24230;&#31080;&#25151;</a></li><li><a href="#6">&#30005;&#24433;&#26085;&#24230;&#31080;&#25151;</a></li><li><a href="#7">&#24433;&#38498;&#27599;&#26085;&#31080;&#25151;</a></li><li><a href="#8">ETC</a></li><li><a href="#9">Record Time</a></li></ul></div><h2>A Little Clean Work<a name="1"></a></h2><pre class="codeinput">tic;
+<span class="comment">% clear;</span>
+<span class="comment">% clc;</span>
+<span class="comment">% close all;</span>
+format <span class="string">compact</span>;
+</pre><h2>&#20840;&#23616;&#21442;&#25968;<a name="2"></a></h2><pre class="codeinput">gPara.len_demo = 8;
+</pre><h2>tushare api connect<a name="3"></a></h2><p>&#36755;&#20837;&#24744;&#33258;&#24049;&#30340;Token,&#26597;&#30475;&#20301;&#32622; https://tushare.pro/user/token</p><pre class="codeinput">YourTushareToken_char = TushareToken;
+token = YourTushareToken_char;
+api = pro_api(token);
+</pre><h2>&#30005;&#24433;&#26376;&#24230;&#31080;&#25151;<a name="4"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'bo_monthly'</span>,<span class="string">'date'</span>,<span class="string">'20181101'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+       date            name          list_date      avg_price    month_amount    list_day    p_pc    wom_index    m_ratio    rank
+    __________    ______________    ____________    _________    ____________    ________    ____    _________    _______    ____
+    '20181101'    '&#27602;&#28082;&#65306;&#33268;&#21629;&#23432;&#25252;&#32773;'        '2018-11-09'    36           1.7456e+05      22          19      7.39         46.8       1   
+    '20181101'    '&#26080;&#21517;&#20043;&#36744;'            '2018-11-16'    35                49472      15          14      7.85         13.3       2   
+    '20181101'    '&#31070;&#22855;&#21160;&#29289;&#65306;&#26684;&#26519;&#24503;&#27779;&#20043;&#32618;'     '2018-11-16'    38                37763      15          12       7.2         10.1       3   
+    '20181101'    '&#26080;&#25932;&#30772;&#22351;&#29579;2&#65306;&#22823;&#38393;&#20114;&#32852;&#32593;'    '2018-11-23'    36                17685       8          11      8.21          4.7       4   
+    '20181101'    '&#21517;&#20390;&#25506;&#26607;&#21335;&#65306;&#38646;&#30340;&#25191;&#34892;&#20154;'     '2018-11-09'    31                12625      22           9      6.32          3.4       5   
+    '20181101'    '&#25000;&#35910;&#29305;&#24037;3'           '2018-11-23'    30                11811       8          10       6.7          3.2       6   
+    '20181101'    '&#32993;&#26691;&#22841;&#23376;&#21644;&#22235;&#20010;&#29579;&#22269;'       '2018-11-02'    35                11238      29           6      6.36            3       7   
+    '20181101'    '&#39123;&#39118;&#22855;&#21163;'            '2018-11-02'    30                 9497      29           7      6.07          2.5       8   
+&#26102;&#38388;&#24050;&#36807; 0.107806 &#31186;&#12290;
+</pre><h2>&#30005;&#24433;&#21608;&#24230;&#31080;&#25151;<a name="5"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'bo_weekly'</span>,<span class="string">'date'</span>,<span class="string">'20181126'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+       date            name         avg_price    week_amount      total      list_day    p_pc    wom_index    up_ratio    rank
+    __________    ______________    _________    ___________    _________    ________    ____    _________    ________    ____
+    '20181126'    '&#26080;&#21517;&#20043;&#36744;'            35           27733              62312    17          14      7.87           0         1   
+    '20181126'    '&#27602;&#28082;&#65306;&#33268;&#21629;&#23432;&#25252;&#32773;'        35           13592          1.813e+05    24           9      7.39         -46         2   
+    '20181126'    '&#26080;&#25932;&#30772;&#22351;&#29579;2&#65306;&#22823;&#38393;&#20114;&#32852;&#32593;'    36           10129              23667    10           9      8.23         -25         3   
+    '20181126'    '&#25000;&#35910;&#29305;&#24037;3'           31            6783              14720    10           8      6.71         -15         4   
+    '20181126'    '&#31070;&#22855;&#21160;&#29289;&#65306;&#26684;&#26519;&#24503;&#27779;&#20043;&#32618;'     39            2928              39087    17           6       7.2         -71         5   
+    '20181126'    '&#32769;&#29240;102&#23681;'          29            2227               2263     3           6         0           0         6   
+    '20181126'    '&#20129;&#21629;&#25937;&#36174;'            29            1132               1133     3           4         0           0         7   
+    '20181126'    '&#25688;&#37329;&#22855;&#32536;'            33             797                797     3           4         0           0         8   
+&#26102;&#38388;&#24050;&#36807; 0.095857 &#31186;&#12290;
+</pre><h2>&#30005;&#24433;&#26085;&#24230;&#31080;&#25151;<a name="6"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'bo_daily'</span>,<span class="string">'date'</span>,<span class="string">'20181207'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+       date            name         avg_price    day_amount      total       list_day    p_pc    wom_index    up_ratio    rank
+    __________    ______________    _________    __________    __________    ________    ____    _________    ________    ____
+    '20181207'    '&#28023;&#29579;'              36           15391              16287     1          27      8.21         1625        1   
+    '20181207'    '&#26080;&#21517;&#20043;&#36744;'            35            1019              70956    22           9      7.85          -37        2   
+    '20181207'    '&#29399;&#21313;&#19977;'             33             374                910     1           4       8.4          183        3   
+    '20181207'    '&#24778;&#28059;&#39123;&#28010;'            30             370                376     1           3      6.64         7300        4   
+    '20181207'    '&#27602;&#28082;&#65306;&#33268;&#21629;&#23432;&#25252;&#32773;'        33             205         1.8477e+05    29           5      7.39          -72        5   
+    '20181207'    '&#26080;&#25932;&#30772;&#22351;&#29579;2&#65306;&#22823;&#38393;&#20114;&#32852;&#32593;'    35             135              25084    15           6      8.21          -48        6   
+    '20181207'    '&#25000;&#35910;&#29305;&#24037;3'           30              76              16468    15           5       6.7          -79        7   
+    '20181207'    '&#36828;&#21435;&#30340;&#29287;&#27468;'           31              46                191    54          42         0           92        8   
+&#26102;&#38388;&#24050;&#36807; 0.092346 &#31186;&#12290;
+</pre><h2>&#24433;&#38498;&#27599;&#26085;&#31080;&#25151;<a name="7"></a></h2><pre class="codeinput">tic;
+tData = api.query(<span class="string">'bo_cinema'</span>,<span class="string">'date'</span>,<span class="string">'20181207'</span>);
+tData(1:gPara.len_demo,:)
+toc;
+</pre><pre class="codeoutput">ans = 
+       date                      c_name                    aud_count    att_ratio    day_amount    day_showcount    avg_price    p_pc     rank
+    __________    _____________________________________    _________    _________    __________    _____________    _________    _____    ____
+    '20181207'    '&#19978;&#28023;&#20116;&#35282;&#22330;&#19975;&#36798;&#24191;&#22330;&#24215;'                             4149         37.889       2.6222e+05     58               63.2        71.53    1   
+    '20181207'    '&#37329;&#36920;&#21271;&#20140;&#22823;&#24742;&#22478;IMAX&#24215;'                           3485         40.196       2.5651e+05     48               73.6         72.6    2   
+    '20181207'    '&#21335;&#20140;&#26032;&#34903;&#21475;&#22269;&#38469;&#24433;&#22478;'                              5359          37.96       2.5383e+05    103              47.36        52.03    3   
+    '20181207'    '&#21271;&#20140;&#24066;&#37329;&#27849;&#28207;&#22269;&#38469;&#24433;&#22478;'                             3409           23.1       2.3951e+05    112              70.26        30.44    4   
+    '20181207'    'Jackie Chan\u5317\u4eac\u8000\u83b1'    5357         26.133       2.3855e+05     99              44.53        54.11    5   
+    '20181207'    '&#21271;&#20140;UME&#21326;&#26143;&#22269;&#38469;&#24433;&#22478;'                            2697         32.539       2.3269e+05     44              86.28         61.3    6   
+    '20181207'    '&#24191;&#24030;&#39134;&#25196;&#24433;&#22478;&#65288;&#27491;&#20339;&#20998;&#24215;&#65289;'                           3462          25.81       2.3032e+05     61              66.53        56.75    7   
+    '20181207'    '&#19978;&#28023;&#30334;&#20029;&#23467;&#24433;&#22478;&#65288;&#29615;&#36152;iapm&#24215;&#65289;'                       2478         40.612       2.2901e+05     35              92.42         70.8    8   
+&#26102;&#38388;&#24050;&#36807; 0.423739 &#31186;&#12290;
+</pre><h2>ETC<a name="8"></a></h2><pre class="codeinput">over = 1;
+</pre><h2>Record Time<a name="9"></a></h2><pre class="codeinput">toc;
+displayEndOfDemoMessage(mfilename);
+</pre><pre class="codeoutput">&#26102;&#38388;&#24050;&#36807; 0.439356 &#31186;&#12290;
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% AMain_demo_Tushare_TMT
+% by LiYang_faruto
+% 
+% Email:farutoliyang@foxmail.com
+% 
+% 2019/01/01
+% 
+% 通过Tushare Pro获取期货相关数据（使用 Tushare_MATLAB_FSDK）
+% 
+% Tushare_MATLAB_FSDK see 
+% 
+% <https://github.com/faruto/Tushare_MATLAB_FSDK Tushare_MATLAB_FSDK>
+%
+% <https://faruto.github.io/html/index.html faruto_github_io>
+%% A Little Clean Work
+tic;
+% clear;
+% clc;
+% close all;
+format compact;
+%% 全局参数
+
+gPara.len_demo = 8;
+
+%% tushare api connect
+% 输入您自己的Token,查看位置 https://tushare.pro/user/token
+
+YourTushareToken_char = TushareToken;
+token = YourTushareToken_char;
+api = pro_api(token);
+
+%% 电影月度票房
+tic;
+tData = api.query('bo_monthly','date','20181101');
+tData(1:gPara.len_demo,:)
+toc;
+%% 电影周度票房
+tic;
+tData = api.query('bo_weekly','date','20181126');
+tData(1:gPara.len_demo,:)
+toc;
+%% 电影日度票房
+tic;
+tData = api.query('bo_daily','date','20181207');
+tData(1:gPara.len_demo,:)
+toc;
+%% 影院每日票房
+tic;
+tData = api.query('bo_cinema','date','20181207');
+tData(1:gPara.len_demo,:)
+toc;
+%% ETC
+over = 1;
+
+%% Record Time
+toc;
+displayEndOfDemoMessage(mfilename);
+
+##### SOURCE END #####
+--></body></html>
