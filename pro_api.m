@@ -142,6 +142,9 @@ date      on      1w      2w      1m      3m      6m      9m      1y
                     if ismember('trade_date',data.Properties.VariableNames)
                         data = sortrows(data,'trade_date','ascend');
                     end
+                    if ismember('trade_time',data.Properties.VariableNames)
+                        data = sortrows(data,'trade_time','ascend');
+                    end                    
                 catch
                     if size(index,1) ~= 1
                         index = index';
